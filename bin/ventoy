@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+DEVICE=$1
+
+if [[ -z "$1" ]]; then
+  echo "[ERROR] Please provide a device (e.g. /dev/sda)"
+  exit 1
+fi
+
+docker run --rm -it -p 24680:24680 --device "${DEVICE}" --group-add disk kuwii/ventoy:latest
